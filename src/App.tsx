@@ -1,27 +1,22 @@
+import { CreateTask } from './components/Task'
+
 import './App.css'
+import logo from './assets/logo.svg'
 
 export function Header() {
 
   return (
-    <>
-      <h1>AgenlOn ToDo&apos;S</h1>
-    </>
+    <header className="header">
+      <img src={logo} className="logo" alt="AngelOn logo" />
+      <h1 className="title">to<span className='blue'>do</span></h1>
+    </header>
   )
 }
 
 export function Main() {
   return (
-    <>
-      <h2>Bodies</h2>
-      <p>Let the bodies hit the floor</p>
-    </>
-  )
-}
-
-export function Footer() {
-  return (
-    <>
-      <pre>Nothing is wrong with me</pre>
-    </>
+    <main className='main'>
+      <CreateTask />
+    </main>
   )
 }

@@ -1,0 +1,97 @@
+
+.createTaskForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0px;
+    gap: 0.5rem;
+    min-height: 3.375rem;
+    margin-top: -2rem;
+}
+
+.createTaskFormInput {
+    box-sizing: border-box;
+    /* Auto layout */
+    padding: 1rem;
+    gap: 0.5rem;
+    width: 39.875rem;
+    height: 3.375rem;  
+    background: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+.createTaskFormButton {
+    width: 5.625rem;
+    height: 3.25rem;
+    background: var(--blue-dark);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+.createTaskFormButton:hover,taskButton:focus {
+    color: black;
+    background: var(--blue);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.taskList {
+    text-align: center;
+    width: 39.875rem;
+    padding: 0px;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.taskListInfo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    height: 1.125rem;
+}
+
+.taskListInfoCreated {
+    color: var(--blue);
+}
+
+.taskListInfoCompleted {
+    color: var(--purple);
+}
+
+.taskListInfoCount {
+    color: white;
+    background: var(--gray-700);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius);
+    padding: 0 0.5rem;
+}
+
+.taskListTasks,
+.taskListEmpty {
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333333;
+    border-radius: 8px
+}
+
+.taskListEmpty img {
+    filter: drop-shadow(var(--shadow));
+}
+
+ul.task {
+    display: flex;
+    justify-content: space-between;
+}
+ul.task li {
+    list-style: none;
+}
