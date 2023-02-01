@@ -1,4 +1,3 @@
-
 .createTaskForm {
     display: flex;
     flex-direction: row;
@@ -23,6 +22,11 @@
     border-radius: var(--radius);
     font-size: 1rem;
 }
+.createTaskFormInput:hover,
+.createTaskFormInput:focus {
+    border: 1px solid var(--blue);
+}
+
 
 .createTaskFormButton {
     width: 5.625rem;
@@ -33,7 +37,8 @@
     font-weight: bold;
     color: white;
 }
-.createTaskFormButton:hover,taskButton:focus {
+.createTaskFormButton:hover,
+.createTaskFormButton:focus {
     color: black;
     background: var(--blue);
 }
@@ -79,7 +84,6 @@
 .taskListEmpty {
     width: 100%;
     margin-top: 2rem;
-    padding-top: 2rem;
     border-top: 1px solid #333333;
     border-radius: 8px
 }
@@ -88,10 +92,20 @@
     filter: drop-shadow(var(--shadow));
 }
 
-ul.task {
+div.taskListTasks ul.task {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    padding-left: 0px;
+    background: var(--gray-700);
 }
-ul.task li {
-    list-style: none;
+
+div.taskListTasks ul.task li {
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+div.taskListTasks ul.task li.taskTitle {
+    text-align: left;
+    width: 100%;
 }

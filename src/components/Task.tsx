@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { Checkbox, useCheckboxState } from 'pretty-checkbox-react';
 import { v4 as uuid } from 'uuid';
 import styles from './Task.module.css'
 import clipboard from '../assets/clipboard.svg';
@@ -11,17 +12,50 @@ export interface ITask {
 }
 
 export function Task(task:ITask) {
-    return (
-      <ul className={styles.task} id={task.id}>
-          <li className={styles.taskCompleted}>{
-              task.completed ? 'completed' : 'complete'
-          }</li>
-          <li className={styles.taskTitle}>{task.title}</li>
-          <li className={styles.taskDeleted}>{
-              task.deleted ? 'deleted' : 'delete'
-          }</li>
-      </ul>
-    )
+  const onChangeComplete = useCallback(
+    () => {
+      completeState.setState(!task.completed)
+    },
+    [task.completed],
+  )
+  const completeState = useCheckboxState(
+    { state:task.completed, onChange:onChangeComplete }
+  )
+  const onChangeDelete = useCallback(
+    () => {
+      completeState.setState(!task.deleted)
+    },
+    [task.deleted],
+  )
+  const deleteState = useCheckboxState(
+    {state:task.deleted, onChange:onChangeDelete}
+  )
+  
+  return (
+    <ul className={styles.task} id={task.id}>
+        <li className={styles.taskCompleted}>
+            <Checkbox
+              name="taskComplete"
+              title="Check to complete task"            
+              onChange={completeState.onChange}
+              defaultChecked={task.completed}
+            >
+              {completeState.state}
+            </Checkbox>
+        </li>
+        <li className={styles.taskTitle}>{task.title}</li>
+        <li className={styles.taskDeleted}>
+            <Checkbox
+              name="taskDelete"
+              title="Check to delete task"
+              checked={task.deleted}
+              onChange={deleteState.onChange}
+            >
+              {deleteState.state}
+            </Checkbox>
+        </li>
+    </ul>
+  )
 }
 
 export function ListTask({taskList}: {taskList: ITask[]}) {
@@ -45,7 +79,8 @@ export function ListTask({taskList}: {taskList: ITask[]}) {
                 </span>
             </p>
         </div>
-        {!activeTasks.length ?
+        {!activeTasks.length
+        ?
           <div className={styles.taskListEmpty}>
             <img src={clipboard} width= {100} height= {100} alt='clipboard showing empty lines' aria-disabled='true' />
             <p><strong>You have not created tasks.</strong>
@@ -72,7 +107,7 @@ export function CreateTask() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
 
   function handleNewTask() {
-    // deprecated function to prevent page reload,
+    // /!\ deprecated function to prevent page reload,
     // specially when the form is submitted by pressing enter.
     event?.preventDefault(); 
     const newTask = {
@@ -98,14 +133,13 @@ export function CreateTask() {
           className={styles.createTaskFormInput}
           placeholder='Add a new task'
           name='taskTitle'
+          required
         />
         <button
           className={styles.createTaskFormButton}
           onClick={handleNewTask}
           type='button'
-        >
-          Create
-        </button>
+        >Create</button>
       </form>
 
       <ListTask taskList={taskList} />
