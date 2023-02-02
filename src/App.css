@@ -13,7 +13,11 @@
 }
 
 .title {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.5rem;
     padding-bottom: 0.4rem;
+}
+.title .blue {
+    color: var(--blue);
+    filter: shadow(var(--shadow));
 }
