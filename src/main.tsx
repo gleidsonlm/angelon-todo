@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Header, Main } from './App'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('body') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
     <Header />
     <Main />

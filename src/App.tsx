@@ -1,5 +1,4 @@
-import { CreateTask } from './components/Task'
-
+import { TaskApp } from './components/Task'
 import './App.css'
 
 export function Header() {
@@ -15,7 +14,7 @@ export function Header() {
 export function Main() {
   return (
     <main className='main'>
-      <CreateTask />
+      <TaskApp />
     </main>
   )
 }
