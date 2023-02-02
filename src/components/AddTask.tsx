@@ -27,7 +27,10 @@ export default function AddTask({ onAddTask }: IAddTask) {
         className={styles.createTaskFormButton}
         onClick={() => { setText(''); onAddTask(title); }}
         type='button'
-      >Add</button>
+      >
+        <span>Add</span>
+        <span className="material-symbols-rounded">add_circle</span>
+      </button>
     </form>
   )
 }
