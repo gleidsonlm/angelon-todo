@@ -114,7 +114,7 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
           <span className={styles.taskCompleteCheckmark}></span>
         </label>
         <label className={styles.taskTitleLabel}>
-          {taskContent}
+          <strong>{taskContent}</strong>
         </label>
         <label className={styles.taskDeleteContainer}>
           <button
