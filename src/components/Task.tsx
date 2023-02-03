@@ -100,10 +100,5 @@ const seedTasks:Array<ITask> = [
     id: uuid(),
     title: "The Third Task is to create a beatriful README.md for github",
     completed: false,
-  },
-  {
-    id: uuid(),
-    title: "How about incorporate a Pomodoro alarm?",
-    completed: false,
   }
 ];

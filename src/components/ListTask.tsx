@@ -91,7 +91,7 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
         e.preventDefault();
         setIsEditing(false)
       }}>
-        <input
+        <input className={styles.EditTaskInput}
           placeholder='Add new Task'
           value={task.title}
           onChange={e => {
@@ -132,7 +132,7 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
         <label className={styles.taskTitleLabel}>
           {
             task.completed?
-              <strike className={styles.taskTitleCompleted}>{taskContent}</strike>
+              <s className={styles.taskTitleCompleted}>{taskContent}</s>
             :
               <strong>{taskContent}</strong>
           }

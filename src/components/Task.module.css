@@ -26,7 +26,7 @@
     gap: 0.5rem;
     width: 39.875rem;
     height: 3.375rem;  
-    background: var(--gray-500);
+    background-color: var(--gray-500);
     border: 2px solid var(--gray-700);
     border-radius: var(--radius);
     font-size: 1rem;
@@ -34,6 +34,7 @@
 .createTaskFormInput:hover,
 .createTaskFormInput:focus {
     border: 2px solid var(--blue);
+    background-color: var(--gray-700);
 }
 
 .createTaskFormButton {
@@ -43,7 +44,7 @@
     justify-content: space-around;
     width: 5.625rem;
     height: 3.25rem;
-    background: var(--blue-dark);
+    background-color: var(--blue-dark);
     border-radius: 0.5rem;
     font-size: 1rem;
     font-weight: bold;
@@ -51,7 +52,7 @@
 }
 .createTaskFormButton:hover,
 .createTaskFormButton:focus {
-    background: var(--blue);
+    background-color: var(--blue);
 }
 
 .wrapper {
@@ -85,7 +86,7 @@
 
 .taskListInfoCount {
     color: white;
-    background: var(--gray-700);
+    background-color: var(--gray-700);
     border: 2px solid var(--gray-700);
     border-radius: var(--radius);
     padding: 0 0.5rem;
@@ -112,7 +113,7 @@ div.taskListEmpty img {
 
 .taskListTasks li {
   display: flex;
-  background: var(--gray-500);
+  background-color: var(--gray-500);
   border: 2px solid var(--gray-400);
   box-shadow: 0px 2px 0.5rem rgba(0, 0, 0, 0.06);
   border-radius: 0.5rem;
@@ -151,6 +152,18 @@ div.taskListEmpty img {
   
 }
 
+.EditTaskInput {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: var(--gray-700);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius);
+  font-size: 1rem;
+
+}
+
 /* Hide browser default checkbox */
 .taskCompleteContainer input {
   position: absolute;
@@ -164,8 +177,8 @@ div.taskListEmpty img {
   position: absolute;
   top: 0;
   left: 0;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
   background-color: transparent;
   border: 2px solid var(--blue);
   border-radius: 50%;
@@ -210,10 +223,10 @@ div.taskListEmpty img {
 
 /* Custom checkmark is a tipped square background */
 .taskCompleteContainer .taskCompleteCheckmark:after {
-  left: 0.55rem;
-  top: 0.3rem;
-  width: 0.5rem;
-  height: 0.75rem;
+  left: 0.45rem;
+  top: 0.2rem;
+  width: 0.4rem;
+  height: 0.8rem;
   border: solid white;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
@@ -226,27 +239,21 @@ div.taskListEmpty img {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 /* Custom button is an gray icon */
 .taskDeleteIcon {
   content: url('/trashbin.svg');
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 /* On mouse-over, icon is red with gray-light background */
 .taskDeleteContainer:hover button ~ .taskDeleteIcon {
   background-color: var(--gray-400);
   content: url('/trash.svg');
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
   transition: background-color 200ms ease-out 100ms
-}
-
-
-.taskListTasks li ~ .taskTitleCompleted
-{
-  transform: translateY(5rem);
 }
