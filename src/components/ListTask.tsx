@@ -21,6 +21,13 @@ export default function TaskList({
   onDeleteTask
 }:ITaskList) {
 
+  const activeTasks = tasks.filter(
+    task => task.completed === false
+  )
+  const completedTasks = tasks.filter(
+    task => task.completed === true
+  )
+
   return(
     <div className={styles.wrapper}>
       <div className={styles.taskList}>
@@ -49,7 +56,16 @@ export default function TaskList({
             </div>
           :
             <div className={styles.taskListTasks}>
-              {tasks.map(task => (
+              {activeTasks.map(task => (
+                <ul key={task.id} className={styles.taskContainer}>
+                  <Task 
+                    task={task}
+                    onChange={onChangeTask}
+                    onDelete={onDeleteTask}
+                  />
+                </ul>
+              ))}
+              {completedTasks.map(task => (
                 <ul key={task.id} className={styles.taskContainer}>
                   <Task 
                     task={task}
@@ -114,7 +130,12 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
           <span className={styles.taskCompleteCheckmark}></span>
         </label>
         <label className={styles.taskTitleLabel}>
-          <strong>{taskContent}</strong>
+          {
+            task.completed?
+              <strike className={styles.taskTitleCompleted}>{taskContent}</strike>
+            :
+              <strong>{taskContent}</strong>
+          }
         </label>
         <label className={styles.taskDeleteContainer}>
           <button

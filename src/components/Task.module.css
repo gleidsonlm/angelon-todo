@@ -104,9 +104,6 @@ div.taskListEmpty img {
   width: 4rem;
 }
 
-.taskListEmpty {
-}
-
 .taskListTasks ul {
   padding: 0;
   margin: 0;
@@ -133,6 +130,11 @@ div.taskListEmpty img {
 
 .taskTitleLabel strong{
   font-weight: 400;
+}
+
+.taskTitleLabel .taskTitleCompleted {
+  color: var(--purple);
+  text-decoraction: strikethrough;
 }
 
 .taskCompleteContainer {
@@ -241,4 +243,10 @@ div.taskListEmpty img {
   height: 1.75rem;
   width: 1.75rem;
   transition: background-color 200ms ease-out 100ms
+}
+
+
+.taskListTasks li ~ .taskTitleCompleted
+{
+  transform: translateY(5rem);
 }
