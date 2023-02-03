@@ -14,12 +14,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  --purple: rgba(130, 132, 250, 1);
+  --purple-dark: rgba(94, 96, 206, 1);
   --blue: rgba(78, 168, 222, 1);
   --blue-dark: rgba(30, 111, 159, 1);
+  --gray-400: rgba(51, 51, 51, 1);
   --gray-500: rgba(38, 38, 38, 1);
   --gray-600: rgba(26, 26, 26, 1);
   --gray-700: rgba(13, 13, 13, 1);
-  --purple: rgba(130, 132, 250, 1);
+  
   --shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   --radius: 0.5rem;
@@ -29,6 +32,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   max-width: 1440px;
   min-height: 100vh;
   background: var(--gray-600);

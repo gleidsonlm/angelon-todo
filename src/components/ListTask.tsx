@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ITask } from './Task';
 import styles from './Task.module.css'
 import clipboard from '../assets/clipboard.svg'
+
 interface ITaskList {
   tasks: Array<ITask>;
   onChangeTask: (task: ITask) => void;
@@ -19,14 +20,13 @@ export default function TaskList({
   onChangeTask,
   onDeleteTask
 }:ITaskList) {
-  const activeTasks = tasks.filter(task =>!task.completed).length;
 
   return(
     <div className={styles.wrapper}>
       <div className={styles.taskList}>
         <div className={styles.taskListInfo}>
           <strong className={styles.taskListInfoCreated}>Created&nbsp;
-            <span className={styles.taskListInfoCount}>{activeTasks}</span>
+            <span className={styles.taskListInfoCount}>{tasks.length}</span>
           </strong>
           <strong className={styles.taskListInfoCompleted}> Completed&nbsp;
             <span className={styles.taskListInfoCount}>
@@ -49,17 +49,15 @@ export default function TaskList({
             </div>
           :
             <div className={styles.taskListTasks}>
-              <ul className={styles.task}>
-                {tasks.map(task => (
-                  <li key={task.id}>
-                    <Task 
+              {tasks.map(task => (
+                <ul key={task.id} className={styles.taskContainer}>
+                  <Task 
                     task={task}
                     onChange={onChangeTask}
                     onDelete={onDeleteTask}
                   />
-                  </li>
-                ))}
-              </ul>
+                </ul>
+              ))}
             </div>
         }
       </div>
@@ -72,7 +70,11 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
   let taskContent;
   if (isEditing) {
     taskContent = (
-      <>
+      <form onSubmit={
+      (e) => {
+        e.preventDefault();
+        setIsEditing(false)
+      }}>
         <input
           placeholder='Add new Task'
           value={task.title}
@@ -82,38 +84,48 @@ function Task({ task, onChange, onDelete }:ITaskFunction) {
               title: e.target.value
             });
           }} />
-        <button onClick={() => setIsEditing(false)}>
-          Save
-        </button>
-      </>
+      </form>
     );
   } else {
     taskContent = (
-      <>
+      <strong onClick={() => setIsEditing(true)} >
         {task.title}
-        <button onClick={() => setIsEditing(true)}>
-          Edit
-        </button>
-      </>
+      </strong>
     );
   }
   return (
-    <label className={styles.taskLabel}>
-      <input
-        className={styles.taskCompletedCheckbox}
-        type="checkbox"
-        checked={task.completed}
-        onChange={e => {
-          onChange({
-            ...task,
-            completed: e.target.checked
-          });
-        }}
-      />
-      {taskContent}
-      <button onClick={() => onDelete(task.id)}>
-        Delete
-      </button>
-    </label>
+    <>
+      <li className={styles.taskRound}>
+        <label
+          className={styles.taskCompleteContainer}
+        >
+          <input
+            type='checkbox'
+            placeholder='Check for complete the task'
+            className={styles.taskCompleteCheckbox}
+            checked={task.completed}
+            onChange={e => {
+              onChange({
+                ...task,
+                completed: e.target.checked
+              });
+            }}      
+          />
+          <span className={styles.taskCompleteCheckmark}></span>
+        </label>
+        <label className={styles.taskTitleLabel}>
+          {taskContent}
+        </label>
+        <label className={styles.taskDeleteContainer}>
+          <button
+            className={styles.taskDeleteButton}
+            onClick={() => onDelete(task.id)}
+            type='button'
+            title='Delete'
+          />
+          <span className={styles.taskDeleteIcon}></span>
+        </label>
+      </li>
+    </>
   );
 }

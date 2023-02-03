@@ -86,9 +86,14 @@ export function TaskApp() {
 }
 
 const seedTasks:Array<ITask> = [
-  // {
-  //   id: uuid(),
-  //   title: "The First Task is to create the task manager",
-  //   completed: false,
-  // }
+  {
+    id: uuid(),
+    title: "The First Task is to create the task manager",
+    completed: false,
+  },
+  {
+    id: uuid(),
+    title: "The Second Task is to build the frontend with React. Vite can be our helper here or maybe",
+    completed: false,
+  }
 ];
